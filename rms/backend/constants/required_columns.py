@@ -1,0 +1,5 @@
+REQUIRED_COLUMNS = {
+    'CNTRYSCHEME': 'ISO3A',
+    'BLDGSCHEME': 'RMS',
+    'OCCSCHEME': 'SIC'
+}

@@ -1,0 +1,26 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.skip {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.skip mat-form-field {
+  max-width: 50px;
+  text-align: center;
+}
+.fileChooser {
+  margin-top: 75px;
+  width: 300px;
+}
+
+button {
+  background-color: whitesmoke;
+  width: 200px;
+  margin: 0 auto;
+}

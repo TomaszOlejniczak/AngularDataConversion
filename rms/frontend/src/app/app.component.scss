@@ -1,0 +1,23 @@
+mat-toolbar {
+  display: flex;
+  justify-content: center;
+  height: 85px;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.home {
+  font-size: 22px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin-bottom: 5px;
+}

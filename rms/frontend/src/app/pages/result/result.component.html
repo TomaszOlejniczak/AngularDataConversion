@@ -1,0 +1,61 @@
+<div class="content">
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container
+      *ngFor="let col of dataTable?.columns"
+      matColumnDef="{{ col }}"
+    >
+      <mat-header-cell *matHeaderCellDef class="header">
+        <b class="headerName">{{ col }}</b>
+        <hr />
+        <form class="example-form">
+          <mat-form-field
+            matTooltip="CHANGE HEADER NAME"
+            class="example-full-width"
+          >
+            <input
+              type="text"
+              matInput
+              [formControl]="getControl(col)"
+              [matAutocomplete]="auto"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let option of getFilteredOptions(col) | async"
+                [value]="option"
+                (onSelectionChange)="onSelect($event.source.value, col)"
+              >
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+        <div class="hintButtons">
+          <button
+            mat-mat-button
+            matTooltip="PROPOSED: {{ (dataTable?.rmsProposal)[col] }}"
+            class="hintBtn"
+          >
+            <mat-icon class="help" inline="true">help</mat-icon>
+          </button>
+          <button
+            class="removeBtn"
+            matTooltip="REMOVE COLUMN"
+            (click)="removeCol(col)"
+          >
+            <mat-icon inline="true">remove_circle</mat-icon>
+          </button>
+        </div>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row[col] }} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="dataTable?.columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: dataTable?.columns"></mat-row>
+  </mat-table>
+  <div class="paginator">
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+  <button mat-button class="acceptCol" (click)="acceptCols()">
+    Accept Columns
+  </button>
+</div>

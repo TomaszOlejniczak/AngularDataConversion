@@ -1,0 +1,41 @@
+<div class="content">
+  <mat-form-field class="fileChooser" appearance="outline">
+    <ngx-mat-file-input
+      [formControl]="fileControl"
+      [multiple]="false"
+      accept=".csv, .xlsx"
+    >
+    </ngx-mat-file-input>
+    <mat-hint>
+      <p>Name: {{ fileInfo?.name }}</p>
+      <p>Size: {{ fileInfo?.size }} KB</p>
+    </mat-hint>
+  </mat-form-field>
+  <div class="skip">
+    <div>
+      Skip
+      <mat-form-field appearance="outline">
+        <input
+          type="number"
+          matInput
+          [value]="rowsNum"
+          (input)="rowsNum = $event.target.value"
+        />
+      </mat-form-field>
+      above rows
+    </div>
+    <div>
+      Skip
+      <mat-form-field appearance="outline">
+        <input
+          type="number"
+          matInput
+          [value]="footNum"
+          (input)="footNum = $event.target.value"
+        />
+      </mat-form-field>
+      below rows
+    </div>
+  </div>
+  <button mat-button (click)="onSend()">Send</button>
+</div>
